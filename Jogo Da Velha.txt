@@ -1,7 +1,3 @@
-//Éric D'andréa Rapatão RA - 04722-035
-//José Luiz Vanzelli Neto RA - 04722-054
-//Murilo Cabral Paulino RA - 04722-025
-//Vittorio Cichetto Cusumano RA - 04722-032
 #include<stdio.h>
 
 int  Vazios(),JOGADOR1 = 'X',JOGADOR2 = 'O';
