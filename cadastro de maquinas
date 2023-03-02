@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Definição da estrutura que representa uma máquina
+typedef struct {
+    int id;
+    char processador[50];
+    char geracao_do_processador[20];
+    char placa_de_video[50]; // a placa de vídeo deve ser uma string
+    char memoria_ram[15];
+} Maquina;
+    
+
+// Função para as informações da máquina
+void cadastrarMaquina(Maquina *maquina) {
+    printf("Informe o processador: ");
+    scanf("%s", maquina->processador);
+    printf("Informe a geração do processador: ");
+    scanf("%s", maquina->geracao_do_processador);
+    printf("Informe a placa de vídeo da máquina: ");
+    scanf("%s", maquina->placa_de_video);
+    printf("Informe a memória RAM da máquina: ");
+    scanf("%s", maquina->memoria_ram);
+    maquina->id = rand(); // Atribui um ID aleatório a máquina
+}
+
+int main() {
+    int n;
+    printf("Quantas máquinas deseja cadastrar? ");
+    scanf("%d", &n);
+    
+    Maquina maquina[n]; // Cria um array de n máquinas
+    
+    for (int i = 0; i < n; i++) {
+        printf("\n--- Cadastro de máquina %d ---\n", i+1);
+        cadastrarMaquina(&maquina[i]);
+    }
+    
+    printf("\n--- Lista de máquinas cadastradas ---\n");
+    for (int i = 0; i < n; i++) {
+        printf("ID: %d\n", maquina[i].id);
+        printf("Processador: %s\n", maquina[i].processador);
+        printf("Geração: %s\n", maquina[i].geracao_do_processador);
+        printf("Placa de vídeo: %s\n", maquina[i].placa_de_video);
+        printf("Memória RAM: %s\n\n", maquina[i].memoria_ram);
+    }
+    
+    return 0;
+}
