@@ -1,0 +1,161 @@
+//Éric D'andréa Rapatão RA - 04722-035
+//José Luiz Vanzelli Neto RA - 04722-054
+//Murilo Cabral Paulino RA - 04722-025
+//Vittorio Cichetto Cusumano RA - 04722-032
+#include<stdio.h>
+
+int  Vazios(),JOGADOR1 = 'X',JOGADOR2 = 'O';
+char tabulero [3][3],Vencedor();
+void MostrarQuadro(),JogadaDoJOGADOR1(),JogadaDoJOGADOR2(),ResetarTabela(),MostrarVencedor(char); 
+
+int main(){
+
+	
+	char FimDeJogo = ' ';
+	ResetarTabela();
+	
+	
+	while(FimDeJogo == ' '&& Vazios() != 0){
+	
+	 MostrarQuadro();
+	  
+	 JogadaDoJOGADOR1();
+	 FimDeJogo = Vencedor();
+	 if(FimDeJogo != ' ' || Vazios() == 0){
+	 	break;
+	 }
+	 MostrarQuadro();
+	   
+	 JogadaDoJOGADOR2();
+	 FimDeJogo = Vencedor();
+	 if(FimDeJogo != ' ' || Vazios() == 0){
+	 	break;
+	 	
+	}
+}
+    MostrarQuadro();
+    MostrarVencedor(FimDeJogo);
+}
+
+void MostrarQuadro(){
+	 
+	printf("\n    %c | %c | %c ",tabulero[0][0],tabulero[0][1],tabulero[0][2]);
+	printf("\n  =============\n");
+	printf("    %c | %c | %c ",tabulero[1][0],tabulero[1][1],tabulero[1][2]);
+	printf("\n  =============\n");
+	printf("    %c | %c | %c \n",tabulero[2][0],tabulero[2][1],tabulero[2][2]);
+	
+}
+char Vencedor(){
+	
+	for(int x = 0; x < 3; x++){
+		if(tabulero[x][0] == tabulero[x][1] && tabulero[x][0] == tabulero[x][2]){
+			return tabulero[x][0];
+		}
+	}
+
+     for(int x = 0; x < 3; x++){
+		if(tabulero[0][x] == tabulero[1][x] && tabulero[0][x] == tabulero[2][x]){
+			return tabulero[0][x];
+		}
+	}
+	
+		if(tabulero[0][0] == tabulero[1][1] && tabulero[0][0] == tabulero[2][2]){
+				return tabulero[0][0];	
+		}
+		if(tabulero[0][2] == tabulero[1][1] && tabulero[0][2] == tabulero[2][0]){
+				return tabulero[0][2];	
+		}
+	return ' ';
+}
+	
+void JogadaDoJOGADOR1(){
+	
+	int LI;
+    int CO;
+
+   do
+   {
+      printf("X Escola uma linha entre 1 e 3:");
+      scanf("%d", &LI);
+      LI--;
+      printf("X Escolha uma coluna enter 1 e 3:");
+      scanf("%d", &CO);
+      CO--;
+
+      if(tabulero[LI][CO] != ' '){
+      
+        printf("Movimento invalido.\n");
+      }
+    else{
+        tabulero[LI][CO] = JOGADOR1;
+        break;
+      }
+   } while (tabulero[LI][CO] != ' ');
+	
+	
+}
+void JogadaDoJOGADOR2(){
+	
+   int LI;
+   int CO;
+
+   do
+   {
+      printf("O Escola uma linha entre 1 e 3:");
+      scanf("%d", &LI);
+      LI--;
+      printf("O Escolha uma coluna enter 1 e 3:");
+      scanf("%d", &CO);
+      CO--;
+
+      if(tabulero[LI][CO] != ' '){
+        printf("Movimento invalido.\n");
+      }
+      else{
+        tabulero[LI][CO] = JOGADOR2;
+        break;
+      }
+   } while (tabulero[LI][CO] != ' ');
+   
+}
+
+int  Vazios(){
+	int espacos = 9;
+	
+	for(int x = 0; x < 3; x++){
+		for(int y = 0; y < 3; y++){
+		if(tabulero[x][y] != ' '){
+			espacos--;
+			
+		}	
+			
+	}
+}
+	return espacos;
+	
+}
+void MostrarVencedor(char FimDeJogo){
+	
+	if(FimDeJogo == JOGADOR1){
+		printf("JOGADOR1,Venceu!!");
+	}
+	else if(FimDeJogo == JOGADOR2){
+		printf("JOGADOR2,Venceu!!");
+	}
+	else{
+		printf("Deu Velha.");
+	}
+	
+	}
+void ResetarTabela(){
+	
+	for(int i = 0; i < 3; i++){
+		for(int j = 0; j < 3; j++){
+			tabulero[i][j] = ' ';
+		
+	}
+	}	
+	
+	
+}
