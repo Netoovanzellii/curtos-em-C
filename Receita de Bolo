@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    FILE *arquivo;
+    arquivo = fopen("receita_de_bolo.txt", "w");
+
+    // Escrevendo a receita no arquivo
+    fputs("Receita de Bolo de Cenoura\n\n", arquivo);
+    fputs("Ingredientes:\n", arquivo);
+    fputs("- 3 cenouras médias\n", arquivo);
+    fputs("- 3 ovos\n", arquivo);
+    fputs("- 1 xícara (chá) de óleo\n", arquivo);
+    fputs("- 2 xícaras (chá) de açúcar\n", arquivo);
+    fputs("- 2 e 1/2 xícaras (chá) de farinha de trigo\n", arquivo);
+    fputs("- 1 colher (sopa) de fermento em pó\n", arquivo);
+
+    fputs("\nModo de Preparo:\n", arquivo);
+    fputs("1. Descasque as cenouras e corte em pedaços pequenos.\n", arquivo);
+    fputs("2. Bata as cenouras no liquidificador com os ovos e o óleo até formar um creme.\n", arquivo);
+    fputs("3. Em um recipiente, misture o açúcar e a farinha de trigo.\n", arquivo);
+    fputs("4. Adicione o creme de cenoura aos poucos, misturando bem.\n", arquivo);
+    fputs("5. Por último, adicione o fermento em pó e misture delicadamente.\n", arquivo);
+    fputs("6. Despeje a massa em uma forma untada e enfarinhada.\n", arquivo);
+    fputs("7. Leve ao forno preaquecido a 180°C por aproximadamente 40 minutos ou até dourar.\n", arquivo);
+
+    fclose(arquivo);
+
+    // Lendo e imprimindo a receita na tela
+    arquivo = fopen("receita_de_bolo.txt", "r");
+    int c;
+    while ((c = getc(arquivo)) != EOF) {
+        putchar(c);
+    }
+    fclose(arquivo);
+
+    return 0;
+}
